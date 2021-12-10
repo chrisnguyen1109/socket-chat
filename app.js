@@ -35,7 +35,7 @@ app.post('/api/v1/users/check-user', (req, res) => {
     return res.json({ status: 'fail' });
 });
 
-const server = app.listen(3000, () => {
+const server = app.listen(PORT, () => {
     console.log(`listening on *:${PORT}`);
     io.connect(server);
 });
