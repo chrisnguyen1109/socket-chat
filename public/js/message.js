@@ -5,6 +5,24 @@ const $ = document.querySelector.bind(document);
 const messageChat = $('#message-chat');
 const chatHistory = $('.chat-history');
 
+const checkAutoScroll = () => {
+    const newMessage = messageChat.lastElementChild;
+
+    const newMessageStyles = getComputedStyle(newMessage);
+    const newMessageMarginBottom = parseInt(newMessageStyles.marginBottom);
+    const newMessageHeight = newMessage.offsetHeight + newMessageMarginBottom;
+
+    const visibleHeight = chatHistory.offsetHeight;
+
+    const containerHeight = messageChat.scrollHeight;
+
+    const scrollOffset = chatHistory.scrollTop + visibleHeight;
+
+    if (containerHeight - newMessageHeight <= scrollOffset) return true;
+
+    return false;
+};
+
 export default class Message {
     constructor(msg, user, response) {
         this.msg = msg;
@@ -58,6 +76,8 @@ export default class Message {
         const parser = new DOMParser();
         const { body } = parser.parseFromString(this.html, 'text/html');
         messageChat.append(body.firstChild);
-        chatHistory.scrollTop = chatHistory.scrollHeight;
+        if (this.sender || checkAutoScroll()) {
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+        }
     }
 }
