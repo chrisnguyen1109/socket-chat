@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="icon" href="./img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="./css/styles-join.css">
+</head>
+
+<body>
+    <div class="center">
+        <h1>Welcome to Chat room</h1>
+        <form id="form" action="">
+            <div class="inputbox">
+                <input name="user" autocomplete="off" type="text" minlength="6" required>
+                <span>Username</span>
+                <p class="msg-error">This user is in use!</p>
+            </div>
+            <div class="inputbox">
+                <input name="room" autocomplete="off" type="text" minlength="6" required>
+                <span>Chat room</span>
+            </div>
+            <div class="inputbox">
+                <input type="submit" value="Join">
+            </div>
+        </form>
+    </div>
+
+    <script src="./js/join.js"></script>
+</body>
+
+</html>
